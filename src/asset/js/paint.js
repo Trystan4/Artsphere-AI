@@ -32,12 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function generatePaint() {
-    var img = document.getElementById("paint-img");
+    let img = document.getElementById("paint-img");
     if (!img.classList.contains("paint-img-hidden"))
       img.classList.add("paint-img-hidden");
     document.getElementById("paint-result").textContent = "";
 
-    var divImg = document.getElementById("div-img");
+    let divImg = document.getElementById("div-img");
     divImg.classList.add("loader");
     document.getElementById("feedback").style.display = "none";
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const imagerequestBody = {
-      prompt: `The subject is a peaceful landscape, with soft brushstrokes and a dreamy quality. The environment is a serene countryside, with rolling hills and a gentle stream. The mood is tranquil and calming, with a sense of the beauty and simplicity of nature. The medium is oil paint, with techniques like broken color and thick impasto creating a sense of depth and texture. Some artists who inspire this style are Claude Monet or Vincent Van Gogh or Pierre-Auguste Renoir, and the camera settings will be a high-resolution DSLR with a macro lens to capture the intricate details and vibrant colors.Based on${paint}`,
+      prompt: `The subject is a peaceful landscape, with soft brushstrokes and a dreamy quality. The environment is a serene countryside, with rolling hills and a gentle stream. The mood is tranquil and calming, with a sense of the beauty and simplicity of nature. The medium is oil paint, with techniques like broken color and thick impasto creating a sense of depth and texture. Some artists who inspire this style are Claude Monet or Vincent Van Gogh or Pierre-Auguste Renoir, and the camera settings will be a high-resolution DSLR with a macro lens to capture the intricate details and vibrant colors`,
       n: 1,
       size: "256x256",
     };
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         const paint = data.choices[0].message.content
         document.getElementById("paint-result").textContent = paint.replace(/"/g, "");
-        imagerequestBody.prompt = generatePrompt(paint);
+       
         return paint;
       })
       .then((paint) => {
