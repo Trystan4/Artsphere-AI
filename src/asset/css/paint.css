@@ -23,7 +23,7 @@ body {
   cursor: pointer;
   z-index: 2000;
 }
-#home-btn:hover{
+#home-btn:hover {
   top: 40px;
   right: 40px;
   font-size: 40px;
@@ -37,7 +37,6 @@ body {
   cursor: pointer;
   transform-origin: center;
 }
-
 
 #home-btn::before {
   content: "";
@@ -60,13 +59,16 @@ body {
   cursor: pointer;
   z-index: 2000;
 }
-#gallery-btn:hover{
+
+#gallery-btn:hover {
   top: 40px;
   right: 40px;
   font-size: 40px;
+  cursor: pointer;
   font-family: "LettreClassique", Arial, Helvetica, sans-serif;
   transition: 0.5s ease;
 }
+
 #gallery-btn::after {
   content: "";
   top: 40px;
@@ -81,10 +83,6 @@ body {
   position: absolute;
   cursor: pointer;
   transition: 0.5s;
-}
-
-#gallery-btn:hover {
-  cursor: pointer;
 }
 
 h1 {
