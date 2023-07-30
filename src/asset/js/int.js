@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     divImg.classList.add("loader");
 
     const prompt =
-      "Find a short name for interior decoration based on the work of the great designers of the 21st century,22 words max.";
+      "Find a short name for a pixel art creation based on the great  developpers of the 21st century,2 words max.";
     const requestBodyText = {
       messages: [
         {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       ],
       temperature: 0.7,
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
     };
 
     fetch(OPENAI_TEXT_URL, {
