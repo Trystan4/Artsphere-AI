@@ -1,9 +1,13 @@
-// todo injection de vite_api (peut-être rennomer cette variable)
-// todo commenter le code backedn et retirer les codes inutiles
+
+const types = {
+  1: "section graff",
+  2: "section art",
+  3: "section design",
+};
 
 
 function fetchApi(method, urlPath, body) {
-  return fetch(`http://localhost:3000/${urlPath}`, {
+  return fetch(`${ArtsphereApiUrl}/${urlPath}`, {
     method: method,
     body: body ? JSON.stringify(body) : undefined,
     headers: {
@@ -12,8 +16,7 @@ function fetchApi(method, urlPath, body) {
     }
   })
 }
-
-export const artSphereApi = {
+const artSphereApi = {
   ai: {
     generateText: (prompt) =>
       fetchApi('GET', `ai/generateText/${prompt}`),
@@ -32,7 +35,12 @@ export const artSphereApi = {
     login: (email, password) =>
       fetchApi('POST', `users/login`, { email, password })
         .then(response => response.json())
-        .then(json => localStorage.setItem("artsphere-token", json.token)),
+        .then(json => {
+          localStorage.setItem("artsphere-token", json.token);
+          localStorage.setItem("artsphere-username", json.username);
+        }),
+
+
 
     currentUser: () =>
       fetchApi('GET', `users/current`)

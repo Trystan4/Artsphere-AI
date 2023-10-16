@@ -1,23 +1,32 @@
-import artRepository from '../data/repositories/artRepository.js';
+import artRepository from '../sql/artRepository.js';
 (await import('dotenv')).config();
 
+//configuring the timer function
 async function getPendingTimeMinutes(currentUser) {   
   if(currentUser.authenticated) {
-    return true;
+    return 0;
   }
   else {
     const currentDate = new Date();
     const lastGenerated = await artRepository.getLastGeneratedDate(currentUser.ip);
     if(!lastGenerated) {
-      return true;
+      return 0;
     }
     const generatedDate = new Date(lastGenerated.generation_date);
     const minuteDelay = (currentDate - generatedDate) / 60_000;
     return minuteDelay > 5 ? 0 : 5 - minuteDelay;
   }
 }
-
+//configuring the AI service - calling the API
 const aiService = {
+  listOfEachType: async () => {
+    return [
+      ...await artRepository.list(1),
+      ...await artRepository.list(2),
+      ...await artRepository.list(3)
+    ]
+  },
+
   generateText: async (prompt, currentUser) => {
     const pendingTime = await getPendingTimeMinutes(currentUser);
     if(pendingTime > 0) {
@@ -59,6 +68,7 @@ const aiService = {
           response_format: "b64_json",
         })
       })
+      
       const image = await response.json();
       const b64 = image.data[0].b64_json;
       if(image.data[0].b64_json) {

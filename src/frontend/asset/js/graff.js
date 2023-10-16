@@ -1,10 +1,3 @@
-import { artSphereApi } from "./artSphereApi.js";
-import {
-  generatePromptGraff,
-  saveImageToLocalStorage,
-} from "./service.js";
-import { types } from "./type.js";
-
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("graff-btn").addEventListener("click", generateGraff);
 
@@ -18,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     divImg.classList.add("loader");
 
     const prompt =
-      "invent an original SHORT name for a graffiti inspired by multiple street art around the world,choose randomly and mix 2 words in this list :  Alleys, Pulse, Atlas, Mural,  Spectrum,  Unity, Global Graff, Wall Wanderlust, Symphony, Tagged Tapestry, Vivid Voyage, Cosmic Canvas, Alley Anthology, Spray Saga, World Walls, Glimpses, Painted Planet,  Odyssey,Stories.";
+    "Inspired by diverse street art globally, craft a unique, concise graffiti name. Combine and morph elements from two randomly selected words: Alleys, Pulse, Atlas, Mural, Spectrum, Unity, Global, Graff, Wall, Wanderlust, Symphony, Tagged, Tapestry, Vivid, Voyage, Cosmic, Canvas, Alley, Anthology, Spray, Saga, World, Walls, Glimpses, Painted, Planet, Odyssey, Stories. Be creative!"
     
 artSphereApi.ai.generateText(prompt)
       .then((response) => {
@@ -36,7 +29,8 @@ artSphereApi.ai.generateText(prompt)
         return graff;
       })
       .then((graff) => {
-        artSphereApi.ai.generateImage(generatePromptGraff(graff))
+
+        artSphereApi.ai.generateImage(1, graff,generatePromptGraff(graff))
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response was not ok");
@@ -50,11 +44,7 @@ artSphereApi.ai.generateText(prompt)
             document.getElementById(
               "graff-img"
             ).src = `data:image/png;base64,${data.data[0].b64_json}`;
-            saveImageToLocalStorage(
-              document.getElementById("graff-result").textContent,
-              `data:image/png;base64,${data.data[0].b64_json}`,
-              types[1]
-            );
+          
           });
       })
       .catch((error) => {

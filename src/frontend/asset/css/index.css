@@ -4,10 +4,13 @@
   box-sizing: border-box;
   max-width: 100%;
 }
-
+html {
+  background-color :black;
+}
 body {
   cursor: none;
 }
+
 
 #container {
   position: fixed;
@@ -30,43 +33,47 @@ h1 {
 }
 
 h2 {
-  font-size: 1.3rem;
-  margin-top: 0.5vh;
+  font-size: 2.5rem;
+
   font-family: "Modeco Trial", Helvetica, sans-serif;
   text-shadow: 1px 1px 4px rgb(0, 0, 0);
-  -webkit-text-stroke: 0.01px rgb(0, 0, 0);
   -webkit-text-shadow: 15px 15px 20px rgba(255, 255, 255, 0.74);
 
 }
 
 .header>:last-child{
   font-size: 1rem;
-  top: 2.5vh;
+margin-top: 1vh;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-family: "Modeco Trial", Helvetica, sans-serif;
   text-shadow: 1px 1px 4px rgb(0, 0, 0);
   -webkit-text-stroke: 0.01px rgb(0, 0, 0);
   -webkit-text-shadow: 15px 15px 20px rgba(255, 255, 255, 0.74);
 }
+
 .center-container {
   transform: translate(0%, 30%);
 }
 
 .circles-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap:10px;
+  gap:17vw;
   flex-wrap: wrap;
-  margin-top: -5vh;
+ margin-top: -1vh;
 }
 
 .circle-link1,
 .circle-link2,
 .circle-link3 {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.505);
   transition: all 2s;
@@ -194,7 +201,7 @@ h2 {
   margin: auto;
   width: 150px;
   height: 50px;
-  top: 7vh;
+  top: 8vh;
   line-height: 50px;
   font-size: 15px;
   background: transparent;
@@ -315,11 +322,14 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 28vh;
+  position: fixed;
+  bottom: 1vh;  
+  right: 50%;  
+  transform: translateX(50%);  
   list-style-type: none;
-
+  z-index: 1000; 
 }
-#social li {
+  #social li {
   margin: 0 1vw;
 }
 
@@ -346,13 +356,13 @@ h2 {
 #registrationForm {
   z-index: 10000000;
   position: relative;
-  width: 40vw;
-  height: 18vw;
+  width: 33vw;
+  height: 22vw;
   color: white;
   font-family: "Modeco Trial", Helvetica, sans-serif;
   background-color: #000000;
   position: fixed;
-  top: 55%;
+  top: 65%;
   left: 50%;
   border-radius: 1vw;
   border:0.1vw solid white;
@@ -414,14 +424,14 @@ h3 {
 #detailedRegistrationForm {
   z-index: 10000001;
   position: relative;
-  width: 40vw;
+  width: 33vw;
   height: 22vw;
   color: white;
   font-family: "Modeco Trial", Helvetica, sans-serif;
   background-color: #000000;
   box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
   position: fixed;
-  top: 55%;
+  top: 65%;
   left: 50%;
   border-radius: 1vw;
   border: 0.1vw solid white;
@@ -491,7 +501,7 @@ form select[multiple] {
 }
 
 #detailedRegistrationForm div > input[type="checkbox"] + label {
-  margin-top: 3vw; /* Augmentez cette valeur si vous voulez un écart plus grand */
+  margin-top: 3vw;
 }
 
 @keyframes barberpole {

@@ -1,4 +1,4 @@
-import executeQuery from '../executeQuery.js';
+import executeQuery from './executeQuery.js';
 
 const userRepository = {
   /** List all users */
@@ -13,9 +13,10 @@ const userRepository = {
 			VALUES (NULL, :email, :password);
 		`, { email, password }),
 
+		// Get user info
 	getConnectionInfo: (email) =>
 		executeQuery(`
-			SELECT password
+			SELECT password, id
 			FROM artsphereai.user
 			WHERE email = :email;
 		`, { email }).then(result => result[0])
