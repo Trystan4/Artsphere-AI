@@ -4,7 +4,9 @@ import artRepository from '../sql/artRepository.js';
 (await import('dotenv')).config();
 
 //configuring the timer function
-async function getPendingTimeMinutes(currentUser) {   
+async function getPendingTimeMinutes(currentUser) { 
+  console .log(currentUser);
+
   if(currentUser.authenticated) {
     return 0;
   }
@@ -32,7 +34,7 @@ const aiService = {
   generateText: async (prompt, currentUser) => {
     const pendingTime = await getPendingTimeMinutes(currentUser);
     if(pendingTime > 0) {
-      throw new Error(`Too many requests, pending ${pendingTime} min`);
+      throw new Error(`Pending ${pendingTime} min.\nPlease register to unlock!`);
     }
     else {
       const response = await fetch(process.env.OPENAI_TEXT_URL, {
@@ -52,9 +54,10 @@ const aiService = {
   },
 
   generateImage: async (typeId, title, prompt, currentUser) => {
+    console.log(typeId, title, prompt, currentUser);
     const pendingTime = await getPendingTimeMinutes(currentUser);
     if(pendingTime) {
-      throw new Error(`Too many requests, pending ${pendingTime} min`);
+      throw new Error(`Pending ${pendingTime} min.\nPlease register to unlock!`);
     }
     else {
       const response = await fetch(process.env.OPENAI_IMAGE_URL, {
