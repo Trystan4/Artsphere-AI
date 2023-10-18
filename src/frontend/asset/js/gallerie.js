@@ -19,16 +19,19 @@ function init() {
 
     });
 }
-
-function onClickShuffle(type, letter) {
-  const existingImages = JSON.parse(localStorage.getItem("images") || "[]");
-  const filterType = shuffle(existingImages.filter((img) => img.type === types[type]));
-
-  filterType.slice(-4).forEach((element, id) => {
-    document.getElementById(`${letter}${id}`).src = element.base64;
-    console.log(type, letter)
-  });
-}
-
 init();
+
+//Ancienne fonction shuffle
+
+// function onClickShuffle(type, letter) {
+//   const existingImages = JSON.parse(localStorage.getItem("images") || "[]");
+//   const filterType = shuffle(existingImages.filter((img) => img.type === types[type]));
+
+//   filterType.slice(-4).forEach((element, id) => {
+//     document.getElementById(`${letter}${id}`).src = element.base64;
+//     console.log(type, letter)
+//   });
+// }
+
+
 

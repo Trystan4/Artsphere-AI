@@ -16,6 +16,8 @@ loader.load(
     animate();
   }
 );
+
+// Information d'utilisateur connecté (null/undefined si pas connecté)
 const username = localStorage.getItem("artsphere-username");
 const token = localStorage.getItem("artsphere-token");
 
@@ -113,8 +115,8 @@ document
         const registerImg = document.querySelector("#register img");
         registerImg.setAttribute("src", `asset/img/logout.svg`);
         // Cache le PopUp
-        let registrationForm = document.getElementById('registrationForm');
-        registrationForm.classList.add('hidden');  
+        let registrationForm = document.getElementById("registrationForm");
+        registrationForm.classList.add("hidden");
         let detailedRegistrationForm = document.getElementById(
           "detailedRegistrationForm"
         );
